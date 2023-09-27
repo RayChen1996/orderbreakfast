@@ -1,0 +1,38 @@
+[
+    {
+        id:1,
+        foodName:'點心小拼盤',
+        foodPrice:250,
+        description:"套餐加價  ",
+        OriginPrice:70,
+        foodImage:'',
+        status:'製作中'
+    },
+    {
+        id:2,
+        foodName:'拔絲蛋餅+飲料',
+        foodPrice:250,
+        description:"套餐加價  ",
+        OriginPrice:70,
+        foodImage:'',
+        status:'製作中'
+    },
+    {
+        id:3,
+        foodName:'特製滷肉飯+飲料',
+        description:"套餐加價  ",
+        OriginPrice:70,
+        foodPrice:250,
+        foodImage:'burger',
+        status:'已完成'
+    },
+    {
+        id:4,
+        foodName:'豬肉滿福堡+飲料',
+        foodPrice:250,
+        description:"套餐加價 ",
+        OriginPrice:70,
+        foodImage:'burger',
+        status:'製作中'
+    },
+]
