@@ -109,7 +109,7 @@ const renderItem = ({ item }) => (
       >
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'90%' }}>
           <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
-            <Text style={{ fontSize: 18, marginBottom: 10 }}>選擇數量</Text>
+            <Text style={{color:'#000', fontSize: 18, marginBottom: 10 }}>選擇數量</Text>
          
             
 

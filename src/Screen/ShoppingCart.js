@@ -18,7 +18,6 @@ const ShoppingCart = () => {
     setModalVisible(true);
   };
 
-
   const onRefresh = () => {
     setRefreshing(true); // 启动刷新
     handleClickGetMenu(); // 获取新数据
@@ -29,7 +28,6 @@ const ShoppingCart = () => {
       let data = 
       {
         id: Math.random().toString(36).substr(2, 9),
- 
         M_Name: "測試",
         M_DT: "2023-09-23 10:30:00",
         M_ImgSrc: "",
@@ -112,14 +110,44 @@ const ShoppingCart = () => {
  
 
   const handleClickDeleteShopCart = (id) => {
-      axios
-      .delete(`https://json-server-vercel-w33n-git-main-raychen1996.vercel.app/ShoppingCart/${id}`)
-      .then((response) => {
-        handleClickGetMenu()
-      })
-      .catch((error) => {
-           setIsLoading(false); //
-      });
+    Alert.alert(
+      '確認删除',
+      `是否删除這一筆購物清單？`,
+      [
+        {
+          text: '取消',
+          onPress: () => console.log('取消删除'),
+          style: 'cancel',
+        },
+        {
+          text: '删除',
+          onPress: () => {
+            // 在此处执行删除购物车项的逻辑
+       
+            
+              axios
+              .delete(`https://json-server-vercel-w33n-git-main-raychen1996.vercel.app/ShoppingCart/${id}`)
+              .then((response) => {
+                handleClickGetMenu()
+              })
+              .catch((error) => {
+                  setIsLoading(false); //
+              });
+
+
+
+
+
+
+
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+
+
+
   };
 
   const handleClickGetMenu = () =>{

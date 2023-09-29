@@ -1,79 +1,164 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# 找餐店APP
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+**作品緣由**
+--
 
-## Step 1: Start the Metro Server
+  <font color="blue">**作品緣由**</font>
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+> 因每天都會到早餐店用餐，看著他們做的一套這個APP服務，想說可以發揮自己所學技能來實作一套自己APP來跟他們致敬；看到他們運用了二維碼點餐技術，於是開始思考這後面商業邏輯怎麼運作，雖然無法得知他們做的邏輯，但能透過點餐方式自己探索"可能"的點餐流程，這是覺得相當有趣的點。
 
-To start Metro, run the following command from the _root_ of your React Native project:
+:::
 
-```bash
-# using npm
-npm start
+**APP功能流程**
+--
 
-# OR using Yarn
-yarn start
+:::spoiler <font color="blue">**流程**</font>
+![](https://hackmd.io/_uploads/BJxZ9a7l6.png)
+
+**功能介紹**
+--
+
+  <font color="blue">**功能介紹**</font>
+
+|  功能 | 顧客版 | 業主版 |
+| -------- | -------- | -------- |
+|  選購早餐     |    ✔     |      |
+|  精選早餐     |    ✔     |      |
+|  新增購物車     |    ✔     |      |
+|  刪除購物車     |    ✔  |      |
+|  二維碼送出訂單     |    ✔  |      |
+|  直接送單     |   ✔   |      |
+|  訂單追蹤     |   ✔   |      |
+|  餐點反饋     |   ✔   |       |
+|  登入頁面     |   ✔   |   ✔   |
+|  接單管理     |      |    ✔  |
+|  新增餐點     |      |    ✔  |
+|  顧客反饋     |      |    ✔  |
+
+:::
+
+**功能截圖 (客戶版)**
+--
+
+ <font color="blue">**APP 功能截圖 (客戶版)**</font>
+>
+
+![](https://hackmd.io/_uploads/r1gM3hqXea.png)
+![](https://hackmd.io/_uploads/BJeMn39QlT.png)
+![](https://hackmd.io/_uploads/B1Gh35XeT.png)
+![](https://hackmd.io/_uploads/H1f235QgT.png)
+![](https://hackmd.io/_uploads/SJzh29mxa.png)
+![](https://hackmd.io/_uploads/ByG339Qlp.png)
+:::
+
+**功能截圖 (業主版)**
+--
+
+  <font color="blue">**APP 功能截圖 (業主版)**</font>
+
+![](https://hackmd.io/_uploads/SyxeTqmep.png)
+![](https://hackmd.io/_uploads/SyWx69QeT.png)
+![](https://hackmd.io/_uploads/r1-xT9mxp.png)
+:::
+
+**使用技術與工具**
+--
+
+  <font color="blue">**使用技術與工具**</font>
+
+|  使用軟體 | 用途 | 備註 |
+| -------- | -------- | -------- |
+|   ![](https://hackmd.io/_uploads/r1Cvq57e6.png)   |   部署JSON Server API環境   |      |
+|   ![](https://hackmd.io/_uploads/Hk8Fc57lT.png)   |   將APP所需要用到的資料透過編輯json檔 來建構後端服務   |      |
+|   ![](https://hackmd.io/_uploads/B1Xs9cmxa.png)   |   撰寫APP的框架   |      |
+|   ![](https://hackmd.io/_uploads/SyUTq9QeT.png)   |   生成apk構建工具   |      |
+|   ![](https://hackmd.io/_uploads/S1lyj9Ql6.png)   |   撰寫Code   |      |
+|   ![](https://hackmd.io/_uploads/SyGS7oQlp.png)   |   調整專案設定   |      |
+|   ![](https://hackmd.io/_uploads/H1Gs7jXxa.png)   |   構建專案   |  V18.18.0   |
+|   ![](https://hackmd.io/_uploads/SyvPNp7gT.png)   |   API函式庫   |      |
+|   ![](https://hackmd.io/_uploads/H1lP4oQea.png)   |   測試API工具   |      |
+|   ![](https://hackmd.io/_uploads/HkZFuiXlT.png)   |   查詢資料   |      |
+|   ![](https://hackmd.io/_uploads/rygNE67gT.png)   |   Git    |      |
+|   ![](https://hackmd.io/_uploads/BJLxEameT.png)   |   Git Desktop 版控工具   |      |
+
+:::
+
+**遇到問題**
+--
+
+:::spoiler <font color="blue">**遇到問題**</font>
+> 對於一開始JavaScript ES6 箭頭函數語法不熟悉，在撰寫功能時，透過FlatList渲染列表元件在ItemRender逐行資料時，加上點擊事件，怎麼Hot Reload頁面重刷新會導致資料被提交API，這不是我想要的，想要的是當用戶按下Item點擊事件方可提交送API請求，於是找到了原來是寫法上錯誤導致的問題
+
+ 
 ```
 
-## Step 2: Start your Application
+> 在新增訂單到JSON Server 發送請求時 每一筆資料的id 在渲染FlatList列表必須要無重複 否則會有警告 所以就在發送訂單請求時候將id做一個random，但之後可能必須要將每一筆訂單都Load回到APP端逐筆檢查是否有重複id，亦或是後端人員必須檢查id重複性，提示給前端知道
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+  const handleClickPostOrder = ( ) =>{
+      let data = 
+      {
+        id: Math.random().toString(36).substr(2, 9),
+        M_Name: "測試",
+        M_DT: "2023-09-23 10:30:00",
+        M_ImgSrc: "",
+        OrderType: 2,
+        CIdx: 1,
+        Price: 30,
+        Progress: 0
+      }
+      axios.post("https://json-server-vercel-w33n-git-main-raychen1996.vercel.app/Orders",data)
+      .then((response) => {
+        console.log(response.data) 
+          Alert.alert("已送單！");
+      })
+      .catch((error) => {
+          Alert.alert("送單失敗！");
+      });
+  }  
 ```
 
-### For iOS
+也可以用keyExtractor的屬性透過元件自己產生index 也可讓警告消失
+![](https://hackmd.io/_uploads/SJ0xJ67e6.png)
 
-```bash
-# using npm
-npm run ios
+:::
 
-# OR using Yarn
-yarn ios
-```
+**未來規劃&展望**
+--
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+:::spoiler <font color="blue">**未來規劃**</font>
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+> 希望能夠再將React 例如:useState useEffect狀態管理、以及常用元件生命週期Hook 知識點使用方式補齊更加熟悉處理方式
+> 希望能夠提高切版細緻度更貼近設計師真實線稿圖的設計
 
-## Step 3: Modifying your App
+:::
 
-Now that you have successfully run the app, let's modify it.
+**希望優化此作品的點**
+--
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+:::spoiler <font color="blue">**希望優化**</font>
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+- [ ] 登入登出功能串接
+- [ ] 店家可透過APP控制訂單進度 也可掌握接單 製作 送單 客戶完單
+- [ ] 將其餘JSON Server  CRUD API功能串接完成
+- [ ] 列表分類
+- [ ] 結合真實手機APP相機功能來完成業主掃描二維條碼餐點流程
+- [ ] 顧客可瀏覽每日餐點輪播動效
+- [ ] 可以跟第三方串接登入API
+- [ ] 業主APP能及時與伺服器刷新達到通知定通知效果
 
-## Congratulations! :tada:
+:::
 
-You've successfully run and modified your React Native App. :partying_face:
+**專案連結**
+--
 
-### Now what?
+  <font color="blue">**專案連結**</font>
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+[APK下載連結](https://drive.google.com/drive/folders/1W-dhPT1oGvodOcJt7Nzitqp-Fn__Uz3m?usp=sharing)
 
-# Troubleshooting
+[業主版Repo](https://github.com/RayChen1996/orderbreakfast_Boss)
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+[顧客版Repo](https://github.com/RayChen1996/orderbreakfast)
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+:::
