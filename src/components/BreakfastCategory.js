@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 
 const BreakfastCategory = () => {
   const [selectedCategory, setSelectedCategory] = useState('蛋餅類'); // 初始化選中的分類
@@ -21,8 +27,7 @@ const BreakfastCategory = () => {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.categoryContainer}
-    >
+      contentContainerStyle={styles.categoryContainer}>
       {categories.map((category, index) => (
         <TouchableOpacity
           key={index}
@@ -30,14 +35,12 @@ const BreakfastCategory = () => {
           style={[
             styles.categoryItem,
             selectedCategory === category && styles.selectedCategoryItem,
-          ]}
-        >
+          ]}>
           <Text
             style={[
               styles.categoryText,
               selectedCategory === category && styles.selectedCategoryText,
-            ]}
-          >
+            ]}>
             {category}
           </Text>
         </TouchableOpacity>

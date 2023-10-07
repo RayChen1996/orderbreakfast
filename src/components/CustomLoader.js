@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Modal } from 'react-native';
+import {View, Text, StyleSheet, Modal} from 'react-native';
 import ProgressBar from 'react-native-progress/Bar';
 
-const CustomLoader = ({ visible, progress, onClose }) => {
+const CustomLoader = ({visible, progress, onClose}) => {
   return (
     <Modal transparent={true} visible={visible} animationType="slide">
       <View style={styles.container}>
@@ -15,7 +15,7 @@ const CustomLoader = ({ visible, progress, onClose }) => {
             color="#3498db"
           />
           <Text style={styles.progressText}>{`${Math.round(
-            progress * 100
+            progress * 100,
           )}%`}</Text>
         </View>
       </View>

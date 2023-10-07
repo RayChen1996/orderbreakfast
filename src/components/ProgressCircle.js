@@ -1,15 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Svg, { Circle } from 'react-native-svg';
+import {View, Text, StyleSheet} from 'react-native';
+import Svg, {Circle} from 'react-native-svg';
 
-const ProgressCircle = ({ progress }) => {
-
+const ProgressCircle = ({progress}) => {
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference * (1 - progress);
-
-
-
 
   return (
     <View style={styles.container}>
@@ -35,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color:'black',
+    color: 'black',
     marginTop: 10,
     fontSize: 18,
   },
