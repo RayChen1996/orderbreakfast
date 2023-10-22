@@ -10,13 +10,18 @@ import {
   TouchableOpacity,
   ToastAndroid,
   TextInput,
+  Platform,
+  Share,
+  Linking,
   Alert,
   ActivityIndicator,
   ProgressBarAndroid,
 } from 'react-native';
+import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 import _Header from '../components/_header';
 import Category from '../components/Category';
 import BreakfastCategory from '../components/BreakfastCategory';
+import DocumentPicker from 'react-native-document-picker';
 // import renderItem  from '../components/ListView/foodItem'
 import menuData from '../../src/data/cart.json';
 import ProgressCircle from '../components/ProgressCircle';
@@ -40,6 +45,70 @@ const Order = ({navigation}) => {
 
   const hideDialog = () => {
     setDialogVisible(false);
+  };
+
+  const checkPermission = async () => {
+    const result = await check(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
+    if (result === RESULTS.GRANTED) {
+      console.log('权限已授予');
+    } else {
+      console.log('权限未授予');
+
+      requestPermission(); // 请求权限
+    }
+  };
+  const openAppSettings = () => {
+    if (Platform.OS === 'android') {
+      Linking.openSettings();
+    }
+  };
+  // 请求权限
+  const requestPermission = async () => {
+    const result = await request(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE);
+    console.log(result);
+
+    if (result == 'blocked') {
+      openAppSettings();
+    }
+    if (result === RESULTS.GRANTED) {
+      console.log('权限已授予');
+    } else {
+      console.log('权限未授予');
+    }
+  };
+
+  const pickDocument = async () => {
+    try {
+      const result = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+      });
+      console.log(
+        result.uri,
+        result.type, // mime type
+        result.name,
+        result.size,
+      );
+      if (document.type === 'file') {
+        console.log('File URI:', document.uri);
+        console.log('File type:', document.type);
+        console.log('File name:', document.name);
+        console.log('File size:', document.size);
+
+        // 现在你可以使用 document.uri 来读取文件内容
+        // const fileContent = await RNFS.readFile(document.uri, 'utf8');
+        // console.log('File content:', fileContent);
+      } else {
+        console.log('不支持的文件类型');
+      }
+      // const fileContent = await RNFS.readFile(result.uri, 'utf8');
+      // console.log(fileContent);
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // 用户取消选择文件
+      } else {
+        throw err;
+      }
+    }
   };
 
   const fetchRestaurantList = () => {
@@ -290,8 +359,14 @@ const Order = ({navigation}) => {
   };
 
   useEffect(() => {
-    handleClickGetMenu();
+    // checkPermission();
+
+    // pickDocument();
+    // handleClickGetMenu();
     fetchRestaurantList();
+    setTimeout(() => {
+      navigation.navigate('game');
+    }, 1000);
   }, []);
 
   return (
