@@ -17,8 +17,9 @@ import burger1 from '../assets/burger1.jpg';
 import cookie from '../assets/egg1.jpg';
 import code from '../assets/code.jpg';
 import axios from 'axios';
-
+import QRCode from 'react-native-qrcode-svg';
 const ShoppingCart = ({navigation}) => {
+  const [OrderContent, setOrderContent] = useState('');
   const [refreshing, setRefreshing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   let [cartItems, setCartItems] = useState([]); // 用于存储购物车项的状态
@@ -28,6 +29,12 @@ const ShoppingCart = ({navigation}) => {
     navigation.navigate('checkout'); // Navigate to ScreenB
   };
   const handleShowModal = item => {
+    console.log(item);
+    let OrderJson = {
+      Price: 150,
+      MealName: '測試餐點',
+    };
+    setOrderContent(JSON.stringify(OrderJson));
     setModalVisible(true);
   };
 
@@ -284,10 +291,21 @@ const ShoppingCart = ({navigation}) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>請出示條碼提供給店員結帳！</Text>
+
+            <QRCode
+              value={OrderContent}
+              size={200}
+              bgColor="purple"
+              fgColor="white"
+            />
+
+            {/**
             <Image
               style={{resizeMode: 'cover', borderRadius: 15, margin: 5}}
               source={code}
             />
+           */}
+
             <TouchableOpacity
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>

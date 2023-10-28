@@ -364,9 +364,9 @@ const Order = ({navigation}) => {
     // pickDocument();
     // handleClickGetMenu();
     fetchRestaurantList();
-    setTimeout(() => {
-      navigation.navigate('game');
-    }, 1000);
+    // setTimeout(() => {
+    //   // navigation.navigate('game');
+    // }, 1000);
   }, []);
 
   return (

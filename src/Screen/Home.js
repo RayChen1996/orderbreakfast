@@ -29,18 +29,20 @@ const Home = () => {
           name="首頁"
           component={HomeMain}
           options={{
-            tabBarLabel: 'Home',
+            tabBarLabel: '首頁',
             headerShown: false,
+            tabBarActiveTintColor: 'orange',
             tabBarIcon: ({color, size}) => (
-              <Icon name="home" size={size} color={color} />
+              <Icon name="home" size={size} color={'orange'} />
             ),
           }}
         />
         <Tab.Screen
           options={{
             headerShown: false,
+            tabBarActiveTintColor: 'orange',
             tabBarIcon: ({color, size}) => (
-              <Icon name="shopping-cart" size={size} color={color} />
+              <Icon name="shopping-cart" size={size} color={'orange'} />
             ),
           }}
           name="購物車"
@@ -49,9 +51,10 @@ const Home = () => {
         <Tab.Screen
           options={{
             headerShown: false,
+            tabBarActiveTintColor: 'orange',
             tabBarLabel: '訂單追蹤',
             tabBarIcon: ({color, size}) => (
-              <Icon name="truck" size={size} color={color} />
+              <Icon name="truck" size={size} color={'orange'} />
             ),
           }}
           name="訂單追蹤"
@@ -60,9 +63,10 @@ const Home = () => {
         <Tab.Screen
           options={{
             tabBarLabel: '設定',
+            tabBarActiveTintColor: 'orange',
             headerShown: false,
             tabBarIcon: ({color, size}) => (
-              <Icon name="cog" size={size} color={color} />
+              <Icon name="cog" size={size} color={'orange'} />
             ),
           }}
           name="設定"
