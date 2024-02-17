@@ -58,7 +58,9 @@
 :::
 
 **API**
-
+```
+https://json-server-vercel-w33n-git-main-raychen1996.vercel.app/
+```
 ## **使用技術與工具**
 
 <font color="blue">**使用技術與工具**</font>
